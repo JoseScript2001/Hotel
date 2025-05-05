@@ -1,252 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #6A0DAD; /* Morado principal */
+  --primary-dark: #4A0082; /* Morado oscuro */
+  --primary-light: #BB86FC; /* Morado claro */
+  --accent-color: #FFD700; /* Dorado */
+  --text-light: #FFFFFF;
+  --text-dark: #333333;
+  --background-light: #F8F9FA;
+  --background-dark: #212529;
+  --gradient-start: #8E2DE2;
+  --gradient-end: #4A00E0;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
 
 body {
     margin: 0;
     padding: 0;
-    font-family: Bytesized;
-    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* Navbar */
 nav {
-    background: pink;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px 0;
 }
 
 .navbar-brand {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--text-light) !important;
+    letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 ion-icon {
-    font-size: 1.5em;
+    font-size: 1.3em;
     vertical-align: middle;
     margin-right: 5px;
 }
 
-li:hover {
-    background-color: violet;
-    color: white;
-    border-radius: 5px;
-    padding: 4px;
-    text-align: center;
-    transition: all 0.3s ease;
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-light);
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
 }
 
-header {
-    background: pink;
-    color: black;
-    padding: 50px 0;
-    margin-bottom: 0;
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('path/to/pattern.svg'); /* Opcional: añadir un patrón sutil */
+    background-size: cover;
+    opacity: 0.1;
 }
 
 header h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     max-width: 700px;
-    margin: 0 auto 30px;
+    margin: 0 auto 40px;
+    opacity: 0.9;
 }
 
+/* Main Content */
 main {
-    background: pink;
-    padding: 30px 15px;
+    background-color: var(--background-light);
+    padding: 0;
+    margin-top: -50px; /* Superposición con el header */
 }
 
-/* Estilos para la búsqueda rápida */
+/* Search Container */
 .search-container {
-    margin-top: 30px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
 }
 
 .search-card {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    border: none;
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
 }
 
-/* Estilos para las tarjetas de habitaciones */
+.search-card .card-body {
+    padding: 25px;
+}
+
+.search-card .form-control,
+.search-card .form-select {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.search-card .form-control:focus,
+.search-card .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+}
+
+.search-card .btn-primary {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Room Cards */
+#rooms-container {
+    padding: 50px 0;
+}
+
+h2.text-center {
+    margin-bottom: 40px;
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+h2.text-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    border-radius: 3px;
+}
+
 .room-card {
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: var(--card-shadow);
+    background: linear-gradient(to bottom, #343a40, #212529);
+    border: none;
 }
 
 .room-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-15px);
+    box-shadow: var(--hover-shadow);
 }
 
 .room-card img {
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+}
+
+.room-card:hover img {
+    transform: scale(1.05);
 }
 
 .room-card h4 {
     font-weight: bold;
-    margin: 15px 0;
+    margin: 20px 0 10px;
+    font-size: 1.5rem;
+    color: var(--accent-color);
 }
 
 .room-card p {
     margin-bottom: 20px;
     min-height: 80px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 .amenities {
-    margin: 10px 0;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
 }
 
 .amenities .badge {
-    margin: 0 2px;
-    padding: 5px 10px;
-}
-
-.price-section {
-    font-size: 1.2rem;
-}
-
-.room-price {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #ffcc00;
-}
-
-.original-price {
-    text-decoration: line-through;
-    color: #999;
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
-
-.reserve-btn {
-    padding: 10px 20px;
-    font-weight: bold;
-}
-
-/* Estilos para ofertas especiales */
-.special-offer {
-    position: relative;
-    border: 2px solid #ffcc00;
-}
-
-.offer-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ffcc00;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
     font-size: 0.8rem;
-}
-
-/* Estilos para el footer */
-footer {
-    background-color: #333;
-    color: white;
-}
-
-footer a {
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.social-icons ion-icon {
-    font-size: 2rem;
-    margin: 0 10px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.social-icons ion-icon:hover {
-    color: #ffcc00;
-}
-
-/* Estilos para el toast de notificaciones */
-.toast-container {
-    z-index: 1100;
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
-    }
-    
-    .room-card p {
-        min-height: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    .search-container {
-        padding: 0 15px;
-    }
-}
-
-/* Estilos para el formulario de búsqueda */
-#search-form .form-control,
-#search-form .form-select {
-    border-radius: 5px;
-    padding: 10px;
-}
-
-#search-form .btn-primary {
-    background-color: purple;
-    border-color: purple;
-    padding: 10px;
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
     transition: all 0.3s ease;
-}
-
-#search-form .btn-primary:hover {
-    background-color: #7b00b5;
-    border-color: #7b00b5;
-}
-
-/* Botones generales */
-.btn-primary {
-    background-color: purple;
-    border-color: purple;
-}
-
-.btn-primary:hover {
-    background-color: #7b00b5;
-    border-color: #7b00b5;
-}
-
-/* Animaciones para amenidades */
-.amenities .badge {
-    transition: transform 0.3s ease;
 }
 
 .amenities .badge:hover {
     transform: scale(1.1);
+    background-color: var(--primary-light);
+    color: var(--text-dark);
 }
 
-/* Añadir al final del archivo estilo.css */
+.amenities ion-icon {
+    font-size: 1rem;
+    margin-right: 3px;
+}
 
-/* Estilos para la galería de imágenes */
+.price-section {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.room-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reserve-btn {
+    padding: 12px 20px;
+    font-weight: 600;
+    border-radius: 30px;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.reserve-btn:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.4);
+}
+
+.review-btn {
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.review-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Special Offer */
+.special-offer {
+    position: relative;
+    border: none;
+    background: linear-gradient(to bottom, #343a40, #1a1a1a);
+}
+
+.special-offer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color), var(--accent-color));
+    z-index: -1;
+    border-radius: 17px;
+    animation: border-glow 2s linear infinite;
+}
+
+@keyframes border-glow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Footer */
+footer {
+    background-color: var(--background-dark);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+footer h5 {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.social-icons ion-icon {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+/* Toast */
+.toast-container {
+    z-index: 1100;
+}
+
+.toast {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery Styles */
 .gallery-container {
-    padding: 10px;
+    padding: 20px;
 }
 
 .main-image-container {
@@ -254,11 +439,12 @@ footer a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
-    height: 400px;
-    background-color: #1a1a1a;
-    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 450px;
+    background-color: #10121a;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .main-image {
@@ -273,7 +459,7 @@ footer a:hover {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .gallery-nav {
@@ -281,132 +467,374 @@ footer a:hover {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
 .gallery-nav:hover {
-    background-color: rgba(128, 0, 128, 0.8);
+    background-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .prev-btn {
-    left: 10px;
+    left: 20px;
 }
 
 .next-btn {
-    right: 10px;
+    right: 20px;
 }
 
 .gallery-nav ion-icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .image-caption {
     text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 20px;
 }
 
 .thumbnails-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
 }
 
 .thumbnail {
-    width: 80px;
-    height: 60px;
-    border-radius: 5px;
+    width: 100px;
+    height: 70px;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s ease;
 }
 
-.thumbnail.active {
-    border-color: purple;
+.thumbnail:hover {
     transform: scale(1.05);
 }
 
-/* Añadir botón de galería a las tarjetas de habitación */
+.thumbnail.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* View Gallery Button */
 .view-gallery-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 0.8rem;
+    border-radius: 30px;
+    padding: 8px 15px;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
     z-index: 5;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
 .view-gallery-btn:hover {
-    background-color: rgba(128, 0, 128, 0.8);
+    background-color: var(--primary-color);
+    transform: scale(1.05);
 }
 
 .room-card .mb-3 {
     position: relative;
 }
 
-/* Efecto de zoom en la imagen principal de la galería */
-.main-image img:hover {
-    transform: scale(1.05);
+/* Reseñas Styles */
+.room-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
-/* Animación de carga para imágenes */
-@keyframes imageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.room-rating .stars {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-right: 8px;
 }
 
-.main-image img {
-    animation: imageFadeIn 0.5s ease;
+.room-rating .rating-value {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 5px;
+    color: var(--accent-color);
 }
 
-/* Responsive */
+.room-rating .reviews-count {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.no-reviews {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Reviews Modal Styles */
+.reviews-summary {
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: rgba(106, 13, 173, 0.05);
+    border-radius: 15px;
+}
+
+.average-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.average-rating .rating-value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.average-rating .stars {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.average-rating .reviews-count {
+    font-size: 1rem;
+    color: #666;
+}
+
+.review-form-container {
+    background-color: rgba(106, 13, 173, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.review-form-container h5 {
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.rating-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stars-input {
+    display: flex;
+    margin-right: 15px;
+}
+
+.stars-input .star {
+    font-size: 1.8rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+.stars-input .star:hover {
+    transform: scale(1.2);
+}
+
+.stars-input .star ion-icon.active {
+    color: var(--accent-color);
+}
+
+.rating-value-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.reviews-list h5 {
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.review-item {
+    background-color: rgba(106, 13, 173, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.review-date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.review-rating .stars {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+.review-text {
+    font-style: italic;
+    line-height: 1.6;
+    color: #555;
+}
+
+.no-reviews-message {
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+    color: #888;
+    background-color: rgba(106, 13, 173, 0.05);
+    border-radius: 15px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+    header h1 {
+        font-size: 3.5rem;
+    }
+    
+    .room-card p {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        padding: 60px 0 80px;
+    }
+    
+    header h1 {
+        font-size: 3rem;
+    }
+    
+    .room-card p {
+        min-height: 80px;
+    }
+    
+    .main-image-container {
+        height: 350px;
+    }
+}
+
 @media (max-width: 768px) {
+    header {
+        padding: 50px 0 70px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header p {
+        font-size: 1.1rem;
+    }
+    
+    .room-card p {
+        min-height: auto;
+    }
+    
     .main-image-container {
         height: 300px;
     }
     
+    .gallery-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .gallery-nav ion-icon {
+        font-size: 1.5rem;
+    }
+    
     .thumbnail {
-        width: 60px;
-        height: 45px;
+        width: 80px;
+        height: 60px;
+    }
+    
+    .average-rating .rating-value {
+        font-size: 3rem;
+    }
+    
+    .average-rating .stars {
+        font-size: 1.5rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    header {
+        padding: 40px 0 60px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-card .form-control,
+    .search-card .form-select {
+        margin-bottom: 10px;
+    }
+    
     .main-image-container {
         height: 250px;
     }
     
     .gallery-nav {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
     
     .gallery-nav ion-icon {
@@ -414,201 +842,70 @@ footer a:hover {
     }
 }
 
-/* Añadir al final del archivo estilo.css */
+/* Solución para centrar "Nuestras Habitaciones" y evitar desbordamiento */
+h2.text-center, 
+.section-title {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: normal;
+}
 
-/* Estilos para el sistema de reseñas */
+/* Título principal de sección para "Nuestras Habitaciones" */
+.section-title {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+}
 
-/* Indicador de calificación en las tarjetas */
-.room-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .room-rating .stars {
-    color: #ffc107;
-    font-size: 1.2rem;
-    margin-right: 5px;
-  }
-  
-  .room-rating .rating-value {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-right: 5px;
-  }
-  
-  .room-rating .reviews-count {
-    font-size: 0.9rem;
-    color: #aaa;
-  }
-  
-  .no-reviews {
-    color: #aaa;
-    font-style: italic;
-  }
-  
-  /* Botón de reseñas */
-  .review-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-  
-  .button-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Modal de reseñas */
-  .reviews-summary {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-  }
-  
-  .average-rating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .average-rating .rating-value {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ffc107;
-    line-height: 1;
-    margin-bottom: 5px;
-  }
-  
-  .average-rating .stars {
-    font-size: 1.5rem;
-    color: #ffc107;
-    margin-bottom: 10px;
-  }
-  
-  .average-rating .reviews-count {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  /* Formulario de reseñas */
-  .review-form-container {
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .review-form-container h5 {
-    margin-bottom: 15px;
-  }
-  
-  .rating-selector {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .stars-input {
-    display: flex;
-    margin-right: 10px;
-  }
-  
-  .stars-input .star {
-    font-size: 1.5rem;
-    color: #ccc;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .stars-input .star:hover {
-    transform: scale(1.2);
-  }
-  
-  .stars-input .star ion-icon {
-    pointer-events: none;
-  }
-  
-  .stars-input .star ion-icon.active {
-    color: #ffc107;
-  }
-  
-  .rating-value-display {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ffc107;
-  }
-  
-  /* Lista de reseñas */
-  .reviews-list {
-    margin-top: 20px;
-  }
-  
-  .reviews-list h5 {
-    margin-bottom: 15px;
-  }
-  
-  .review-item {
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .reviewer-name {
-    font-weight: bold;
-  }
-  
-  .review-date {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .review-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .review-rating .stars {
-    font-size: 1.1rem;
-    color: #ffc107;
-    margin-right: 10px;
-  }
-  
-  .review-text {
-    font-style: italic;
-    line-height: 1.4;
-  }
-  
-  .no-reviews-message {
-    text-align: center;
-    padding: 20px;
-    font-style: italic;
-    color: #666;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .average-rating .rating-value {
-      font-size: 2.5rem;
-    }
-    
-    .average-rating .stars {
-      font-size: 1.2rem;
-    }
-    
-    .stars-input .star {
-      font-size: 1.3rem;
-    }
-  }
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+/* Solución para las etiquetas transparentes en Dashboard */
+.nav-link,
+.dashboard-tab,
+.stat-card-title,
+.dashboard-link {
+  color: #ffffff !important; /* Texto blanco sólido */
+  background-color: rgba(128, 0, 255, 0.9) !important; /* Fondo morado semi-transparente */
+  border-radius: 5px;
+  padding: 8px 15px !important;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra suave para mejorar legibilidad */
+  backdrop-filter: blur(5px); /* Difuminado para mejorar contraste */
+}
+
+/* Estilo específico para etiquetas en el panel admin */
+.dashboard-tab.active,
+.nav-tabs .nav-link.active {
+  background-color: #6a0dad !important; /* Morado más oscuro para pestañas activas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Asegurar que el contenedor de nuestras habitaciones esté centrado */
+#rooms-container,
+.section-container {
+  padding: 50px 0;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
