@@ -21,7 +21,7 @@ body {
 
 .login-image {
     flex: 1;
-    background-image: url('/items/cosmos.jpg');
+    background-image: url('https://www.nasa.gov/images/');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
