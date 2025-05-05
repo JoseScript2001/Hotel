@@ -1,0 +1,615 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bytesized&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Playwrite+HU:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Bytesized;
+    background-color: #f5f5f5;
+}
+
+nav {
+    background: pink;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+ion-icon {
+    font-size: 1.5em;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+li:hover {
+    background-color: violet;
+    color: white;
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+header {
+    background: pink;
+    color: black;
+    padding: 50px 0;
+    margin-bottom: 0;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+main {
+    background: pink;
+    padding: 30px 15px;
+}
+
+/* Estilos para la búsqueda rápida */
+.search-container {
+    margin-top: 30px;
+}
+
+.search-card {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.search-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos para las tarjetas de habitaciones */
+.room-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.room-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.room-card h4 {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.room-card p {
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.amenities {
+    margin: 10px 0;
+}
+
+.amenities .badge {
+    margin: 0 2px;
+    padding: 5px 10px;
+}
+
+.price-section {
+    font-size: 1.2rem;
+}
+
+.room-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.reserve-btn {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Estilos para ofertas especiales */
+.special-offer {
+    position: relative;
+    border: 2px solid #ffcc00;
+}
+
+.offer-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #333;
+    color: white;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.social-icons ion-icon {
+    font-size: 2rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.social-icons ion-icon:hover {
+    color: #ffcc00;
+}
+
+/* Estilos para el toast de notificaciones */
+.toast-container {
+    z-index: 1100;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .room-card p {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-container {
+        padding: 0 15px;
+    }
+}
+
+/* Estilos para el formulario de búsqueda */
+#search-form .form-control,
+#search-form .form-select {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#search-form .btn-primary {
+    background-color: purple;
+    border-color: purple;
+    padding: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#search-form .btn-primary:hover {
+    background-color: #7b00b5;
+    border-color: #7b00b5;
+}
+
+/* Botones generales */
+.btn-primary {
+    background-color: purple;
+    border-color: purple;
+}
+
+.btn-primary:hover {
+    background-color: #7b00b5;
+    border-color: #7b00b5;
+}
+
+/* Animaciones para amenidades */
+.amenities .badge {
+    transition: transform 0.3s ease;
+}
+
+.amenities .badge:hover {
+    transform: scale(1.1);
+}
+
+/* Añadir al final del archivo estilo.css */
+
+/* Estilos para la galería de imágenes */
+.gallery-container {
+    padding: 10px;
+}
+
+.main-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    height: 400px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-nav:hover {
+    background-color: rgba(128, 0, 128, 0.8);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.gallery-nav ion-icon {
+    font-size: 1.5rem;
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.thumbnails-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail.active {
+    border-color: purple;
+    transform: scale(1.05);
+}
+
+/* Añadir botón de galería a las tarjetas de habitación */
+.view-gallery-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.view-gallery-btn:hover {
+    background-color: rgba(128, 0, 128, 0.8);
+}
+
+.room-card .mb-3 {
+    position: relative;
+}
+
+/* Efecto de zoom en la imagen principal de la galería */
+.main-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Animación de carga para imágenes */
+@keyframes imageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.main-image img {
+    animation: imageFadeIn 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-image-container {
+        height: 300px;
+    }
+    
+    .thumbnail {
+        width: 60px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-image-container {
+        height: 250px;
+    }
+    
+    .gallery-nav {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .gallery-nav ion-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* Añadir al final del archivo estilo.css */
+
+/* Estilos para el sistema de reseñas */
+
+/* Indicador de calificación en las tarjetas */
+.room-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .room-rating .stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
+  
+  .room-rating .rating-value {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
+  
+  .room-rating .reviews-count {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  .no-reviews {
+    color: #aaa;
+    font-style: italic;
+  }
+  
+  /* Botón de reseñas */
+  .review-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Modal de reseñas */
+  .reviews-summary {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+  
+  .average-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .average-rating .rating-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffc107;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  
+  .average-rating .stars {
+    font-size: 1.5rem;
+    color: #ffc107;
+    margin-bottom: 10px;
+  }
+  
+  .average-rating .reviews-count {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Formulario de reseñas */
+  .review-form-container {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .review-form-container h5 {
+    margin-bottom: 15px;
+  }
+  
+  .rating-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .stars-input {
+    display: flex;
+    margin-right: 10px;
+  }
+  
+  .stars-input .star {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .stars-input .star:hover {
+    transform: scale(1.2);
+  }
+  
+  .stars-input .star ion-icon {
+    pointer-events: none;
+  }
+  
+  .stars-input .star ion-icon.active {
+    color: #ffc107;
+  }
+  
+  .rating-value-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffc107;
+  }
+  
+  /* Lista de reseñas */
+  .reviews-list {
+    margin-top: 20px;
+  }
+  
+  .reviews-list h5 {
+    margin-bottom: 15px;
+  }
+  
+  .review-item {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .reviewer-name {
+    font-weight: bold;
+  }
+  
+  .review-date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .review-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .review-rating .stars {
+    font-size: 1.1rem;
+    color: #ffc107;
+    margin-right: 10px;
+  }
+  
+  .review-text {
+    font-style: italic;
+    line-height: 1.4;
+  }
+  
+  .no-reviews-message {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .average-rating .rating-value {
+      font-size: 2.5rem;
+    }
+    
+    .average-rating .stars {
+      font-size: 1.2rem;
+    }
+    
+    .stars-input .star {
+      font-size: 1.3rem;
+    }
+  }

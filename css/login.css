@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bytesized&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Playwrite+HU:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: Bytesized;
+    background: linear-gradient(120deg, rgba(227, 89, 245, 0.8), rgba(16, 82, 209, 0.87));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-wrapper {
+    display: flex;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 90%;
+    overflow: hidden;
+}
+
+.login-image {
+    flex: 1;
+    background-image: url('/items/cosmos.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.login-container {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    text-align: center;
+    min-width: 300px;
+}
+
+h1 {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: left;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#iniciar {
+    background: rgba(0, 123, 255, 0.9);
+}
+
+#registrarse {
+    background: rgba(0, 255, 123, 0.9);
+}
+
+input[type="button"]:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* Social Login Styles */
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 15px;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.social-btn img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+}
+
+.facebook-btn:hover {
+    background-color: #2d4373;
+}
+
+.github-btn {
+    background-color: #24292e;
+}
+
+.github-btn:hover {
+    background-color: #0d1117;
+}
+
+/* Estilo para el botón de bienvenida */
+.welcome-container {
+    margin-top: 15px;
+}
+
+#btn-principal {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: rgba(255, 123, 0, 0.9);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btn-principal:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.back-link {
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: rgba(0, 0, 0, 1);
+    text-decoration: underline;
+}
+
+/* Toast estilo */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+
+.toast {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    min-width: 300px;
+}
+
+.toast-header {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toast-header.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.toast-header.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+.toast-body {
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    font-weight: bold;
+    color: inherit;
+}
+
+/* Media queries para hacer el diseño responsivo */
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+        width: 95%;
+    }
+    
+    .login-image {
+        min-height: 200px;
+        width: 100%;
+    }
+    
+    .login-container {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-image {
+        min-height: 150px;
+    }
+    
+    .login-container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}

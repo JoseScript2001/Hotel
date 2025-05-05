@@ -1,0 +1,269 @@
+/* Estilos para la página de confirmación de reserva */
+
+.confirmation-header {
+    background-color: #28a745;
+    color: white;
+    padding: 40px 0;
+}
+
+.confirmation-header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.confirmation-header ion-icon {
+    font-size: 2.5rem;
+}
+
+/* Estilos para la tarjeta de confirmación */
+.confirmation-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.confirmation-card-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.confirmation-card-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.confirmation-number {
+    background-color: rgba(128, 0, 128, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.confirmation-number strong {
+    color: purple;
+    font-weight: bold;
+}
+
+.confirmation-card-body {
+    padding: 30px;
+}
+
+.confirmation-section {
+    margin-bottom: 25px;
+}
+
+.confirmation-section h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(128, 0, 128, 0.2);
+}
+
+.confirmation-dates {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.date-block {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.date-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.date-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.date-arrow {
+    margin: 0 15px;
+    color: #aaa;
+    font-size: 1.5rem;
+}
+
+.extras-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.extras-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.extras-list li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para el resumen de precios */
+.price-summary {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.price-summary h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(128, 0, 128, 0.2);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.price-divider {
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 15px 0;
+}
+
+.price-row.total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: purple;
+}
+
+/* Estilos para los botones de acción */
+.confirmation-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: purple;
+    border-color: purple;
+}
+
+.btn-primary:hover {
+    background-color: #660066;
+    border-color: #660066;
+}
+
+.btn-outline-primary {
+    color: purple;
+    border-color: purple;
+}
+
+.btn-outline-primary:hover {
+    background-color: purple;
+    border-color: purple;
+    color: white;
+}
+
+/* Estilos para el pie de la tarjeta */
+.confirmation-card-footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.hotel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.hotel-logo {
+    font-size: 2.5rem;
+    color: purple;
+    margin-right: 15px;
+}
+
+.hotel-details h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.hotel-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.confirmation-note {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Estilos para el acordeón de información */
+.info-accordion .accordion-button {
+    color: #333;
+    font-weight: 500;
+}
+
+.info-accordion .accordion-button:not(.collapsed) {
+    background-color: rgba(128, 0, 128, 0.1);
+    color: purple;
+}
+
+.info-accordion .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(128, 0, 128, 0.2);
+}
+
+.info-accordion .accordion-body {
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .confirmation-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .confirmation-number {
+        margin-top: 10px;
+    }
+    
+    .confirmation-dates {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .date-arrow {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+}

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>Galaxy Hotel - Panel de Administración</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="../index.html" class="navbar-brand"><ion-icon name="bed-outline"></ion-icon> Galaxy Hotel</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Reservar</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="restaurant-outline"></ion-icon> Servicios</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="call-outline"></ion-icon> Contacto</a></li>
+                </ul>
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown" id="user-section">
+                        <!-- Este contenido se cargará dinámicamente con JavaScript -->
+                        <a href="../login.html" class="nav-link" id="login-link">
+                            <ion-icon name="person-outline"></ion-icon> Iniciar Sesión
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="admin-header p-4 mb-3">
+        <div class="container">
+            <h1><ion-icon name="settings-outline"></ion-icon> Panel de Administración</h1>
+            <p>Gestiona las habitaciones, reservaciones y usuarios del hotel</p>
+        </div>
+    </header>
+
+    <main class="p-4">
+        <div class="container">
+            <!-- Pestañas de navegación -->
+            <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+                        <ion-icon name="speedometer-outline"></ion-icon> Dashboard
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reservations-tab" data-bs-toggle="tab" data-bs-target="#reservations" type="button" role="tab" aria-controls="reservations" aria-selected="false">
+                        <ion-icon name="calendar-outline"></ion-icon> Reservaciones
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="rooms-tab" data-bs-toggle="tab" data-bs-target="#rooms" type="button" role="tab" aria-controls="rooms" aria-selected="false">
+                        <ion-icon name="bed-outline"></ion-icon> Habitaciones
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="false">
+                        <ion-icon name="people-outline"></ion-icon> Usuarios
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Contenido de las pestañas -->
+            <div class="tab-content" id="adminTabsContent">
+                <!-- Dashboard -->
+                <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <h2 class="mb-4">Dashboard</h2>
+                    <div class="row g-4">
+                        <!-- Tarjetas de estadísticas -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card stats-card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reservaciones Activas</h5>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="stat-icon">
+                                            <ion-icon name="calendar-number-outline"></ion-icon>
+                                        </div>
+                                        <div class="stat-number" id="active-reservations">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Cargando...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card stats-card bg-success text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Habitaciones Disponibles</h5>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="stat-icon">
+                                            <ion-icon name="bed-outline"></ion-icon>
+                                        </div>
+                                        <div class="stat-number" id="available-rooms">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Cargando...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card stats-card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Usuarios Registrados</h5>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="stat-icon">
+                                            <ion-icon name="people-outline"></ion-icon>
+                                        </div>
+                                        <div class="stat-number" id="registered-users">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Cargando...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card stats-card bg-warning text-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ingresos Mensuales</h5>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="stat-icon">
+                                            <ion-icon name="cash-outline"></ion-icon>
+                                        </div>
+                                        <div class="stat-number" id="monthly-income">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Cargando...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico de ocupación -->
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Ocupación por Tipo de Habitación</h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="roomOccupancyChart" height="250"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gráfico de reservaciones -->
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Reservaciones por Mes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="reservationsChart" height="250"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resumen de próximas reservaciones -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Próximas Llegadas</h5>
+                                    <button class="btn btn-sm btn-outline-primary" id="refresh-arrivals">
+                                        <ion-icon name="refresh-outline"></ion-icon> Actualizar
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Huésped</th>
+                                                    <th>Habitación</th>
+                                                    <th>Llegada</th>
+                                                    <th>Salida</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="upcoming-arrivals">
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <div class="spinner-border" role="status">
+                                                            <span class="visually-hidden">Cargando...</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reservaciones -->
+                <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Gestión de Reservaciones</h2>
+                        <button class="btn btn-primary" id="new-reservation-btn">
+                            <ion-icon name="add-outline"></ion-icon> Nueva Reservación
+                        </button>
+                    </div>
+                    
+                    <!-- Filtros -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Filtros</h5>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label for="filter-status" class="form-label">Estado</label>
+                                    <select class="form-select" id="filter-status">
+                                        <option value="all" selected>Todos</option>
+                                        <option value="confirmada">Confirmada</option>
+                                        <option value="completada">Completada</option>
+                                        <option value="cancelada">Cancelada</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="filter-date-from" class="form-label">Desde</label>
+                                    <input type="date" class="form-control" id="filter-date-from">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="filter-date-to" class="form-label">Hasta</label>
+                                    <input type="date" class="form-control" id="filter-date-to">
+                                </div>
+                                <div class="col-md-3 d-flex align-items-end">
+                                    <button class="btn btn-primary w-100" id="apply-filters">
+                                        <ion-icon name="search-outline"></ion-icon> Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabla de reservaciones -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Huésped</th>
+                                            <th>Habitación</th>
+                                            <th>Fechas</th>
+                                            <th>Total</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reservations-table">
+                                        <tr>
+                                            <td colspan="7" class="text-center">
+                                                <div class="spinner-border" role="status">
+                                                    <span class="visually-hidden">Cargando...</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="datatable-info" id="reservation-table-info">Mostrando 0 de 0 reservaciones</div>
+                                <div class="datatable-pagination">
+                                    <button class="btn btn-sm btn-outline-primary me-2" id="prev-page" disabled>Anterior</button>
+                                    <span id="current-page">Página 1</span>
+                                    <button class="btn btn-sm btn-outline-primary ms-2" id="next-page" disabled>Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habitaciones -->
+                <div class="tab-pane fade" id="rooms" role="tabpanel" aria-labelledby="rooms-tab">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Gestión de Habitaciones</h2>
+                        <button class="btn btn-primary" id="new-room-btn" data-bs-toggle="modal" data-bs-target="#roomModal">
+                            <ion-icon name="add-outline"></ion-icon> Nueva Habitación
+                        </button>
+                    </div>
+                    
+                    <!-- Tarjetas de habitaciones -->
+                    <div class="row g-4" id="rooms-container">
+                        <div class="col-12 text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Usuarios -->
+                <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Gestión de Usuarios</h2>
+                        <div>
+                            <button class="btn btn-outline-primary me-2" id="export-users">
+                                <ion-icon name="download-outline"></ion-icon> Exportar
+                            </button>
+                            <button class="btn btn-primary" id="new-user-btn" data-bs-toggle="modal" data-bs-target="#userModal">
+                                <ion-icon name="add-outline"></ion-icon> Nuevo Usuario
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabla de usuarios -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Fecha de Registro</th>
+                                            <th>Rol</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="users-table">
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <div class="spinner-border" role="status">
+                                                    <span class="visually-hidden">Cargando...</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="datatable-info" id="users-table-info">Mostrando 0 de 0 usuarios</div>
+                                <div class="datatable-pagination">
+                                    <button class="btn btn-sm btn-outline-primary me-2" id="users-prev-page" disabled>Anterior</button>
+                                    <span id="users-current-page">Página 1</span>
+                                    <button class="btn btn-sm btn-outline-primary ms-2" id="users-next-page" disabled>Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para Habitaciones -->
+    <div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="roomModalLabel">Nueva Habitación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="room-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="room-id" class="form-label">ID/Código</label>
+                                <input type="text" class="form-control" id="room-id" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="room-name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="room-name" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="room-description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="room-description" rows="3" required></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="room-type" class="form-label">Tipo</label>
+                                <select class="form-select" id="room-type" required>
+                                    <option value="individual">Individual</option>
+                                    <option value="doble">Doble</option>
+                                    <option value="suite">Suite</option>
+                                    <option value="familiar">Familiar</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="room-price" class="form-label">Precio por Noche</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="room-price" min="0" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="room-capacity" class="form-label">Capacidad</label>
+                                <input type="number" class="form-control" id="room-capacity" min="1" max="10" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Amenidades</label>
+                                <div class="row g-2">
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-wifi">
+                                            <label class="form-check-label" for="amenity-wifi">WiFi</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-tv">
+                                            <label class="form-check-label" for="amenity-tv">TV</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-ac">
+                                            <label class="form-check-label" for="amenity-ac">A/C</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-breakfast">
+                                            <label class="form-check-label" for="amenity-breakfast">Desayuno</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-jacuzzi">
+                                            <label class="form-check-label" for="amenity-jacuzzi">Jacuzzi</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenity-champagne">
+                                            <label class="form-check-label" for="amenity-champagne">Champagne</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="room-image" class="form-label">URL de Imagen</label>
+                                <input type="text" class="form-control" id="room-image" placeholder="https://ejemplo.com/imagen.jpg">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="room-status" class="form-label">Estado</label>
+                                <select class="form-select" id="room-status" required>
+                                    <option value="disponible" selected>Disponible</option>
+                                    <option value="mantenimiento">En Mantenimiento</option>
+                                    <option value="ocupada">Ocupada</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Galería de Imágenes</label>
+                            <div class="gallery-manager">
+                                <div class="gallery-images-container" id="gallery-images-container">
+                                    <!-- Las imágenes de la galería se cargarán dinámicamente -->
+                                </div>
+                                <div class="gallery-controls mt-2">
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="gallery-image-url" placeholder="URL de la imagen">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-primary" id="add-gallery-image">
+                                                <ion-icon name="add-outline"></ion-icon> Añadir
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-text">Añade las URLs de las imágenes para la galería de la habitación</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="save-room">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Usuarios -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModalLabel">Nuevo Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="user-form">
+                        <div class="mb-3">
+                            <label for="user-name" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="user-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="user-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="user-password" minlength="6" required>
+                            <div class="form-text">Mínimo 6 caracteres</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-role" class="form-label">Rol</label>
+                            <select class="form-select" id="user-role" required>
+                                <option value="cliente" selected>Cliente</option>
+                                <option value="recepcion">Recepción</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="save-user">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Detalles de Reservación -->
+    <div class="modal fade" id="reservationDetailModal" tabindex="-1" aria-labelledby="reservationDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservationDetailModalLabel">Detalles de Reservación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="reservation-detail-content">
+                    <div class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success d-none" id="complete-reservation">Completar</button>
+                    <button type="button" class="btn btn-danger d-none" id="cancel-reservation">Cancelar Reservación</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast para notificaciones -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto" id="toast-title">Notificación</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-message">
+                ¡Operación realizada con éxito!
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Galaxy Hotel</h5>
+                    <p>Av. Cosmos #123, Centro<br>Tel: (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Acerca de nosotros</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="mb-0">© 2025 Galaxy Hotel. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Firebase -->
+    <script type="module" src="../js/firebase-config.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

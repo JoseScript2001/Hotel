@@ -1,0 +1,401 @@
+/* Estilos para el panel de administración */
+
+.admin-header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 30px 0;
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.admin-header ion-icon {
+    font-size: 2rem;
+}
+
+/* Estilos para las pestañas */
+.nav-tabs .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 20px;
+    font-weight: 500;
+    color: #555;
+    border: 1px solid transparent;
+}
+
+.nav-tabs .nav-link.active {
+    color: purple;
+    border-color: #dee2e6 #dee2e6 #fff;
+    font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover:not(.active) {
+    background-color: rgba(128, 0, 128, 0.05);
+    border-color: #f0f0f0 #f0f0f0 #dee2e6;
+}
+
+.nav-tabs .nav-link ion-icon {
+    font-size: 1.2rem;
+}
+
+/* Estilos para las tarjetas de estadísticas */
+.stats-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stats-card .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Estilos para los botones */
+.btn-primary {
+    background-color: purple;
+    border-color: purple;
+}
+
+.btn-primary:hover {
+    background-color: #660066;
+    border-color: #660066;
+}
+
+.btn-outline-primary {
+    color: purple;
+    border-color: purple;
+}
+
+.btn-outline-primary:hover {
+    background-color: purple;
+    border-color: purple;
+}
+
+/* Estilos para las tablas */
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(128, 0, 128, 0.05);
+}
+
+.datatable-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.datatable-pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilos para las tarjetas de habitaciones */
+.room-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.room-card .card-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.room-card .card-body {
+    padding: 20px;
+}
+
+.room-image {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover .room-image img {
+    transform: scale(1.05);
+}
+
+.room-info {
+    margin-bottom: 15px;
+}
+
+.room-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: purple;
+    margin-bottom: 10px;
+}
+
+.room-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.room-status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-maintenance {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-occupied {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Estados para reservaciones */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-confirmed {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.status-completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Estilos para modales */
+.modal-header {
+    background-color: purple;
+    color: white;
+}
+
+.modal-footer .btn-primary {
+    background-color: purple;
+    border-color: purple;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #660066;
+    border-color: #660066;
+}
+
+/* Estilos para los formularios */
+.form-label {
+    font-weight: 500;
+    color: #444;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: purple;
+    box-shadow: 0 0 0 0.2rem rgba(128, 0, 128, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .stats-card .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .room-image {
+        height: 150px;
+    }
+}
+
+/* Estilos para el gestor de galería */
+.gallery-manager {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    margin-bottom: 15px;
+}
+
+.gallery-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 100px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.gallery-image-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.gallery-image-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-image-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(220, 53, 69, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-image-item:hover .gallery-image-remove {
+    opacity: 1;
+}
+
+.gallery-image-remove ion-icon {
+    font-size: 14px;
+}
+
+.gallery-controls .form-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.main-image-flag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(25, 135, 84, 0.8);
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 0 5px 0 0;
+}
+
+.set-as-main {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(13, 110, 253, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-image-item:hover .set-as-main {
+    opacity: 1;
+}
+
+.empty-gallery-message {
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Añadir al archivo admin.css */
+.room-gallery-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .room-gallery-info ion-icon {
+    font-size: 1rem;
+  }
+  
+  .room-image {
+    position: relative;
+  }

@@ -1,0 +1,313 @@
+/* Estilos para la página de mis reservaciones */
+
+.reservas-header {
+    background-color: purple;
+    color: white;
+    padding: 40px 0;
+}
+
+.reservas-header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.reservas-header ion-icon {
+    font-size: 2.5rem;
+}
+
+/* Estilos para el sidebar de filtros */
+.reservas-sidebar .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.reservas-sidebar .card-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.reservas-sidebar .card-header h5 {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.reservas-sidebar .card-body {
+    padding: 20px;
+}
+
+.reservas-sidebar .form-label {
+    font-weight: 500;
+    color: #444;
+}
+
+.reservas-sidebar .btn-primary {
+    background-color: purple;
+    border-color: purple;
+}
+
+.reservas-sidebar .btn-primary:hover {
+    background-color: #660066;
+    border-color: #660066;
+}
+
+.reservas-sidebar .btn-outline-primary {
+    color: purple;
+    border-color: purple;
+}
+
+.reservas-sidebar .btn-outline-primary:hover {
+    background-color: purple;
+    border-color: purple;
+    color: white;
+}
+
+/* Estilos para el contenedor de reservaciones */
+.reservas-wrapper {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.reservas-wrapper .reservas-header {
+    background-color: transparent;
+    color: #333;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservas-wrapper .reservas-header h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.reservas-count {
+    background-color: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Estilos para las tarjetas de reserva */
+.reserva-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reserva-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reserva-card .reserva-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reserva-card .reserva-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.reserva-card .reserva-body {
+    padding: 20px;
+}
+
+.reserva-card .reserva-dates {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reserva-card .date-block {
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.reserva-card .date-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.reserva-card .date-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.reserva-card .date-arrow {
+    margin: 0 10px;
+    color: #aaa;
+}
+
+.reserva-card .reserva-info {
+    margin-bottom: 15px;
+}
+
+.reserva-card .reserva-price {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.reserva-card .price-value {
+    color: purple;
+    font-size: 1.2rem;
+}
+
+.reserva-card .reserva-footer {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estados para las reservaciones */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-confirmed {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.status-completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Mensaje de no reservaciones */
+.no-reservations {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.no-reservations ion-icon {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.no-reservations h4 {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.no-reservations p {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el modal de detalles */
+.modal-header {
+    background-color: purple;
+    color: white;
+}
+
+.modal-body .reservation-detail-section {
+    margin-bottom: 20px;
+}
+
+.modal-body .reservation-detail-section h5 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.price-summary {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.price-divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+.price-row.total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: purple;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .reservas-sidebar {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reserva-card .reserva-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .reserva-card .reserva-header .status-badge {
+        margin-top: 10px;
+    }
+    
+    .reserva-card .reserva-dates {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .reserva-card .date-arrow {
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
+    
+    .reserva-card .reserva-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .reserva-card .reserva-footer button {
+        width: 100%;
+    }
+}

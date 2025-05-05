@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/confirmacion.css">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init('YWLyHKBym8x8Nb9fS');
+      })();
+    </script>
+    <title>Galaxy Hotel - Confirmación de Reserva</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="../index.html" class="navbar-brand"><ion-icon name="bed-outline"></ion-icon> Galaxy Hotel</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Reservar</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="restaurant-outline"></ion-icon> Servicios</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="call-outline"></ion-icon> Contacto</a></li>
+                </ul>
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown" id="user-section">
+                        <!-- Este contenido se cargará dinámicamente con JavaScript -->
+                        <a href="../login.html" class="nav-link" id="login-link">
+                            <ion-icon name="person-outline"></ion-icon> Iniciar Sesión
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="confirmation-header p-4 mb-3 text-center">
+        <div class="container">
+            <h1><ion-icon name="checkmark-circle-outline"></ion-icon> ¡Reservación Confirmada!</h1>
+            <p>Gracias por elegir Galaxy Hotel para tu estancia</p>
+        </div>
+    </header>
+
+    <main class="p-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="confirmation-card">
+                        <div class="confirmation-card-header">
+                            <h2>Detalles de la Reservación</h2>
+                            <div class="confirmation-number">
+                                <span>Número de Confirmación:</span>
+                                <strong id="confirmation-id">Cargando...</strong>
+                            </div>
+                        </div>
+                        <div class="confirmation-card-body">
+                            <div class="row">
+                                <!-- Información principal -->
+                                <div class="col-md-7">
+                                    <div class="confirmation-section">
+                                        <h3>Información de la Reserva</h3>
+                                        <p><strong>Habitación:</strong> <span id="room-name">Cargando...</span></p>
+                                        <div class="confirmation-dates">
+                                            <div class="date-block">
+                                                <span class="date-label">Llegada:</span>
+                                                <span class="date-value" id="check-in-date">Cargando...</span>
+                                            </div>
+                                            <div class="date-arrow">
+                                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                                            </div>
+                                            <div class="date-block">
+                                                <span class="date-label">Salida:</span>
+                                                <span class="date-value" id="check-out-date">Cargando...</span>
+                                            </div>
+                                        </div>
+                                        <p><strong>Duración:</strong> <span id="duration">Cargando...</span></p>
+                                        <p><strong>Huéspedes:</strong> <span id="guests">Cargando...</span></p>
+                                    </div>
+                                    
+                                    <div class="confirmation-section">
+                                        <h3>Información del Huésped</h3>
+                                        <p><strong>Nombre:</strong> <span id="guest-name">Cargando...</span></p>
+                                        <p><strong>Email:</strong> <span id="guest-email">Cargando...</span></p>
+                                        <p><strong>Teléfono:</strong> <span id="guest-phone">Cargando...</span></p>
+                                    </div>
+                                    
+                                    <div class="confirmation-section" id="extras-section">
+                                        <h3>Servicios Adicionales</h3>
+                                        <ul class="extras-list" id="extras-list">
+                                            <li>Cargando...</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="confirmation-section" id="special-requests-section">
+                                        <h3>Solicitudes Especiales</h3>
+                                        <p id="special-requests">Cargando...</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Resumen y acciones -->
+                                <div class="col-md-5">
+                                    <div class="price-summary">
+                                        <h3>Resumen de Precios</h3>
+                                        <div class="price-row">
+                                            <span>Habitación:</span>
+                                            <span id="room-price">$0.00</span>
+                                        </div>
+                                        <div class="price-row" id="extras-price-container">
+                                            <span>Extras:</span>
+                                            <span id="extras-price">$0.00</span>
+                                        </div>
+                                        <div class="price-divider"></div>
+                                        <div class="price-row total">
+                                            <span>Total:</span>
+                                            <span id="total-price">$0.00</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="confirmation-actions">
+                                        <a href="mis-reservas.html" class="btn btn-primary btn-lg btn-block">
+                                            Ver Mis Reservaciones
+                                        </a>
+                                        <a href="../index.html" class="btn btn-outline-primary btn-lg btn-block">
+                                            Volver al Inicio
+                                        </a>
+                                        <button id="print-confirmation" class="btn btn-outline-secondary btn-lg btn-block">
+                                            <ion-icon name="print-outline"></ion-icon> Imprimir Confirmación
+                                        </button>
+                                        <button id="resend-email" class="btn btn-outline-primary btn-lg btn-block">
+                                            <ion-icon name="mail-outline"></ion-icon> Reenviar Confirmación por Email
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="confirmation-card-footer">
+                            <div class="hotel-info">
+                                <div class="hotel-logo">
+                                    <ion-icon name="bed-outline"></ion-icon>
+                                </div>
+                                <div class="hotel-details">
+                                    <h4>Galaxy Hotel</h4>
+                                    <p>Av. Cosmos #123, Centro</p>
+                                    <p>Tel: (123) 456-7890</p>
+                                </div>
+                            </div>
+                            <div class="confirmation-note">
+                                <p>Este es su comprobante de reservación. Por favor, preséntelo al momento de hacer check-in o guarde el número de confirmación.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Políticas e información adicional -->
+                    <div class="info-accordion mt-4">
+                        <div class="accordion" id="infoAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Política de Cancelación
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Cancelación con más de 7 días de antelación: reembolso del 100%.</li>
+                                            <li>Cancelación entre 3 y 7 días de antelación: reembolso del 50%.</li>
+                                            <li>Cancelación con menos de 3 días de antelación: sin reembolso.</li>
+                                        </ul>
+                                        <p>Para realizar una cancelación, por favor comuníquese con nuestra recepción al (123) 456-7890 o mediante correo electrónico a reservaciones@galaxyhotel.com mencionando su número de confirmación.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Horarios de Check-in y Check-out
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <p><strong>Check-in:</strong> 15:00 hrs</p>
+                                        <p><strong>Check-out:</strong> 12:00 hrs</p>
+                                        <p>Early check-in y late check-out sujetos a disponibilidad y cargo adicional. Para solicitar alguna de estas opciones, por favor comuníquese con anticipación.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Información Importante
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>Se requiere una tarjeta de crédito válida al momento del check-in para cubrir posibles gastos adicionales.</li>
+                                            <li>No se permiten mascotas en las instalaciones.</li>
+                                            <li>Hotel 100% libre de humo. Fumar en las habitaciones conlleva una multa de $200.</li>
+                                            <li>Para grupos o estancias prolongadas, contáctenos para tarifas especiales.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Galaxy Hotel</h5>
+                    <p>Av. Cosmos #123, Centro<br>Tel: (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Acerca de nosotros</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="mb-0">© 2025 Galaxy Hotel. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Firebase -->
+    <script type="module" src="../js/firebase-config.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/confirmacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/booking.css">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init('YWLyHKBym8x8Nb9fS');
+      })();
+    </script>
+    <title>Galaxy Hotel - Reservación</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="../index.html" class="navbar-brand"><ion-icon name="bed-outline"></ion-icon> Galaxy Hotel</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="booking.html" class="nav-link active"><ion-icon name="calendar-outline"></ion-icon> Reservar</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="restaurant-outline"></ion-icon> Servicios</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><ion-icon name="call-outline"></ion-icon> Contacto</a></li>
+                </ul>
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown" id="user-section">
+                        <!-- Este contenido se cargará dinámicamente con JavaScript -->
+                        <a href="../login.html" class="nav-link" id="login-link">
+                            <ion-icon name="person-outline"></ion-icon> Iniciar Sesión
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="p-4 mb-3 text-center">
+        <h1>Reserva Tu Habitación</h1>
+        <p>Completa los detalles para confirmar tu reservación</p>
+    </header>
+
+    <main class="p-4">
+        <div class="container">
+            <div class="row">
+                <!-- Información de la habitación -->
+                <div class="col-lg-4 order-lg-1 order-2 mt-lg-0 mt-4">
+                    <div class="room-details bg-dark text-white p-4 rounded">
+                        <h3 id="room-title">Cargando...</h3>
+                        <div id="room-image" class="mb-3">
+                            <img src="/items/espacio2.jpg" alt="Habitación" class="img-fluid rounded">
+                            <!-- Añadir dentro del div con id "room-image", justo después de la imagen -->
+<button id="view-gallery-btn" class="btn btn-sm btn-outline-light mt-2">
+    <ion-icon name="images-outline"></ion-icon> Ver más imágenes
+</button>
+                        </div>
+                        <div class="amenities mb-3" id="room-amenities">
+                            <!-- Amenidades se cargarán dinámicamente -->
+                        </div>
+                        <p id="room-description">Cargando descripción...</p>
+                        <div class="price-summary">
+                            <h4>Resumen de Precios</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Precio por noche:</span>
+                                <span id="price-per-night">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Número de noches:</span>
+                                <span id="nights-count">0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2" id="extras-container">
+                                <!-- Los extras se cargarán dinámicamente -->
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between total-price">
+                                <strong>Total:</strong>
+                                <strong id="total-price">$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulario de reservación -->
+                <div class="col-lg-8 order-lg-2 order-1">
+                    <div class="booking-form card">
+                        <div class="card-body">
+                            <form id="reservation-form">
+                                <!-- Fechas y Detalles -->
+                                <h3 class="card-title mb-4">Detalles de la Estancia</h3>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <label for="check-in-date" class="form-label">Fecha de Llegada</label>
+                                        <input type="date" class="form-control" id="check-in-date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="check-out-date" class="form-label">Fecha de Salida</label>
+                                        <input type="date" class="form-control" id="check-out-date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="num-adults" class="form-label">Adultos</label>
+                                        <select class="form-select" id="num-adults" required>
+                                            <option value="1">1</option>
+                                            <option value="2" selected>2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="num-children" class="form-label">Niños</label>
+                                        <select class="form-select" id="num-children">
+                                            <option value="0" selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Servicios adicionales -->
+                                <h3 class="card-title mb-3">Servicios Adicionales</h3>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input extra-option" type="checkbox" id="breakfast" data-price="20">
+                                            <label class="form-check-label" for="breakfast">
+                                                Desayuno buffet (+$20 por día)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input extra-option" type="checkbox" id="parking" data-price="15">
+                                            <label class="form-check-label" for="parking">
+                                                Estacionamiento (+$15 por día)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input extra-option" type="checkbox" id="airport-shuttle" data-price="50">
+                                            <label class="form-check-label" for="airport-shuttle">
+                                                Traslado aeropuerto (+$50 por trayecto)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input extra-option" type="checkbox" id="spa-access" data-price="35">
+                                            <label class="form-check-label" for="spa-access">
+                                                Acceso al spa (+$35 por día)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Datos personales -->
+                                <h3 class="card-title mb-3" id="guest-info-title">Información del Huésped</h3>
+                                <div class="row g-3 mb-4" id="guest-info-section">
+                                    <div class="col-md-6">
+                                        <label for="guest-name" class="form-label">Nombre Completo</label>
+                                        <input type="text" class="form-control" id="guest-name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="guest-email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="guest-email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="guest-phone" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="guest-phone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="guest-id" class="form-label">Documento de Identidad</label>
+                                        <input type="text" class="form-control" id="guest-id" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Solicitudes especiales -->
+                                <div class="mb-4">
+                                    <label for="special-requests" class="form-label">Solicitudes Especiales</label>
+                                    <textarea class="form-control" id="special-requests" rows="3" placeholder="Si tienes alguna solicitud especial, por favor háznoslo saber."></textarea>
+                                </div>
+                                
+                                <!-- Políticas y botón de reserva -->
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="accept-terms" required>
+                                    <label class="form-check-label" for="accept-terms">
+                                        Acepto las <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">políticas de reservación</a> y los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">términos y condiciones</a>
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-lg w-100" id="confirm-reservation">Confirmar Reservación</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Términos y Condiciones -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Políticas de Reservación</h6>
+                    <p>Las reservaciones se garantizan con el pago completo al momento de la reserva.</p>
+                    <p>Check-in: 15:00 hrs / Check-out: 12:00 hrs.</p>
+                    <p>Early check-in y late check-out sujetos a disponibilidad y cargo adicional.</p>
+                    
+                    <h6>Políticas de Cancelación</h6>
+                    <ul>
+                        <li>Cancelación con más de 7 días de antelación: reembolso del 100%.</li>
+                        <li>Cancelación entre 3 y 7 días de antelación: reembolso del 50%.</li>
+                        <li>Cancelación con menos de 3 días de antelación: sin reembolso.</li>
+                    </ul>
+                    
+                    <h6>Políticas Generales</h6>
+                    <p>Se requiere una tarjeta de crédito válida al momento del check-in para cubrir posibles gastos adicionales.</p>
+                    <p>No se permiten mascotas en las instalaciones.</p>
+                    <p>Hotel 100% libre de humo. Fumar en las habitaciones conlleva una multa de $200.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast para notificaciones -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto" id="toast-title">Notificación</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-message">
+                ¡Operación realizada con éxito!
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Galería de Imágenes para booking.html -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="galleryModalLabel">Galería de Imágenes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="gallery-container">
+                    <div class="main-image-container">
+                        <button class="gallery-nav prev-btn">
+                            <ion-icon name="chevron-back-outline"></ion-icon>
+                        </button>
+                        <div class="main-image">
+                            <img src="" alt="Imagen de habitación" id="main-gallery-image">
+                        </div>
+                        <button class="gallery-nav next-btn">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="image-caption" id="image-caption">Imagen 1 de 5</div>
+                    <div class="thumbnails-container" id="thumbnails-container">
+                        <!-- Las miniaturas se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Scripts -->
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Firebase -->
+    <script type="module" src="../js/firebase-config.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/reservas.js"></script>
+</body>
+</html>
